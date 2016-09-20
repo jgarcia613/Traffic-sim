@@ -180,21 +180,23 @@ void Vehicle::setEmergencyVehicle(bool inputEmergencyVehicle)
 {
 	emergencyVehicle = inputEmergencyVehicle;
 }
-
+//************************************************
+//Acceleration formula
+//************************************************
 void Vehicle::updatePosition(double time)
 {
-	using namespace std;								//calc distance changed
+	using namespace std;						//calc distance changed
 	double distance = (0.5 * acceleration * time * time) + (currentSpeed * time);   
 
 	cout << endl << "Before" << endl;					
-	cout << "Acceleration:\t" << acceleration << endl;	//output information
+	cout << "Acceleration:\t" << acceleration << endl;		//output information
 	cout << "Time:\t\t" << time << endl;
 	cout << "Current speed:\t" << currentSpeed << endl;	
 
 	currentSpeed += acceleration * time;				//adjust speed to account for acceleration  
 
 	cout << endl << "After" << endl;					
-	cout << "Acceleration:\t" << acceleration << endl;	//output information
+	cout << "Acceleration:\t" << acceleration << endl;		//output information
 	cout << "Time:\t\t" << time << endl;
 	cout << "Current speed:\t" << currentSpeed << endl << endl;
 														
