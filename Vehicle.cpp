@@ -1,9 +1,7 @@
 #pragma once
-#include "Vehicle.h"
-
+#include "Includes.h"
 Vehicle::Vehicle()
 {
-	time = 1;
 	minSpeed = 0;
 	maxSpeed = 0;
 	currentSpeed = 0;
@@ -18,18 +16,50 @@ Vehicle::Vehicle()
 	acceleration = 0.0;
 	oversized = false;
 	emergencyVehicle = false;
+	direction = PI / 2;
+}
+Vehicle::Vehicle(enum CARTYPES inputCARTYPE)
+{
+	switch (inputCARTYPE)
+	{
+	case MIDSIZE:
+		//** FILL ME
+		break;
+	case SEMI:
+		break;
+	case TRUCK:
+		break;
+	case SPORTSCAR:
+		break;
+	default:
+		minSpeed = 0;
+		maxSpeed = 0;
+		currentSpeed = 0;
+		tracktion = 0;
+		weight = 0;
+		brakingPower = 0;
+		length = 0;
+		width = 0;
+		hazardRating = 0;
+		latitude = 0.0;
+		longitude = 0.0;
+		acceleration = 0.0;
+		oversized = false;
+		emergencyVehicle = false;
+		direction = PI / 2;
+		break;
+	}
 }
 //************************************************
 //Getters
 //************************************************
-int Vehicle::getTime()
-{
-	return time;
-}
-
 string Vehicle::getModel()
 {
 	return vehicleModel;
+}
+double Vehicle::getDirection()
+{
+	return direction;
 }
 int Vehicle::getAccelerationSpeed()
 {
@@ -83,10 +113,6 @@ double Vehicle::getLongitude()
 {
 	return longitude;
 }
-double Vehicle::getDirection()
-{
-	return direction;
-}
 double Vehicle::getAcceleration()
 {
 	return acceleration;
@@ -104,13 +130,14 @@ bool Vehicle::getEmergencyVehicle()
 //Setters
 //************************************************
 
-void Vehicle::setTime(int inputTime)
-{
-	time = inputTime;
-}
+
 void Vehicle::setAccelerationSpeed(int inputSpeed)
 {
 	accelerationSpeed = inputSpeed;
+}
+void Vehicle::setDirection(double inputDirection)
+{
+	direction = inputDirection;
 }
 void Vehicle::setbrakingSpeed(int inputSpeed)
 {
@@ -164,10 +191,6 @@ void Vehicle::setLongitude(double inputLongitude)
 {
 	longitude = inputLongitude;
 }
-void Vehicle::setDirection(double inputDirection)
-{
-	direction = inputDirection;
-}
 void Vehicle::setAcceleration(double inputAcceleration)
 {
 	acceleration = inputAcceleration;
@@ -180,26 +203,16 @@ void Vehicle::setEmergencyVehicle(bool inputEmergencyVehicle)
 {
 	emergencyVehicle = inputEmergencyVehicle;
 }
-//************************************************
-//Acceleration formula
-//************************************************
-void Vehicle::updatePosition(double time)
+
+//**************************************
+//Test functions
+//**************************************
+void Vehicle::applyAcceleration(double time)
 {
-	using namespace std;						//calc distance changed
-	double distance = (0.5 * acceleration * time * time) + (currentSpeed * time);   
+	//d(t) = 0.5at^2 + vt + k
 
-	cout << endl << "Before" << endl;					
-	cout << "Acceleration:\t" << acceleration << endl;		//output information
-	cout << "Time:\t\t" << time << endl;
-	cout << "Current speed:\t" << currentSpeed << endl;	
+	double distance;
 
-	currentSpeed += acceleration * time;				//adjust speed to account for acceleration  
-
-	cout << endl << "After" << endl;					
-	cout << "Acceleration:\t" << acceleration << endl;		//output information
-	cout << "Time:\t\t" << time << endl;
-	cout << "Current speed:\t" << currentSpeed << endl << endl;
-														
-	latitude += distance * sin(direction);				//direction is in radians
-	longitude += distance * cos(direction);
+	distance = 0.5 * acceleration * time * time + currentSpeed * time;
+	currentSpeed += acceleration * time;
 }
