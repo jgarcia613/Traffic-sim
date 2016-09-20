@@ -1,8 +1,6 @@
 #pragma once
-#include <iostream>
-#include <string>
+#include "Includes.h"
 
-using namespace std;
 class Vehicle
 {
 private:
@@ -11,7 +9,6 @@ private:
 	int maxSpeed;
 	int accelerationSpeed;
 	int brakingSpeed;
-	int time;
 	double currentSpeed;
 	int tracktion;
 	int weight;
@@ -29,12 +26,12 @@ private:
 public:
 	friend ostream &operator<<(ostream &output, Vehicle inputCar);
 	Vehicle();
-	
-	
+	Vehicle(enum CARTYPES inputCARTYPE);
 
 	Vehicle operator++()
 	{
-		updatePosition(getTime());
+		currentSpeed = currentSpeed + acceleration / 3600;
+		longitude += 0.001;
 		return *this;
 	}
 								//526-528
@@ -46,7 +43,6 @@ public:
 	}
 
 	string getModel();
-	int getTime();
 	int getbrakingSpeed();
 	int getAccelerationSpeed();
 	int getMinSpeed();
@@ -60,12 +56,11 @@ public:
 	int getHazardRating();
 	double getlatitude();
 	double getLongitude();
-	double getDirection();
 	double getAcceleration();
 	bool getOversized();
 	bool getEmergencyVehicle();
+	double getDirection();
 
-	void setTime(int inputTime);
 	void setbrakingSpeed(int inputSpeed);
 	void setAccelerationSpeed(int inputSpeed);
 	void setModel(string inputModel);
@@ -80,11 +75,9 @@ public:
 	void setHazardRating(int inputHazardRating);
 	void setlatitude(double inputlatitude);
 	void setLongitude(double inputLongitude);
-	void setDirection(double inputDirection);
 	void setAcceleration(double inputAcceleration);
 	void setOversized(bool inputOversized);
 	void setEmergencyVehicle(bool inputEmergencyVehicle);
-
-	//**Work on Me**
-	void updatePosition(double time);
+	void setDirection(double inputDirection);
+	void applyAcceleration(double time);
 };
