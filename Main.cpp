@@ -1,71 +1,48 @@
-//******************
-//Trafic Simulation
-//******************
-#include "Includes.h"
+/*_____________________________________________
+Isaac Haas, Spence Wilson, Brian Choi, Alexander Tate, Christine Sobolewski, Michael Galzin
+First output draft
+September 22, 2016
+_______________________________________________*/
+#include <iostream>
+#include "Vehicle.h"
+#include <iomanip>
+#include <vector>
+using namespace std;
 
-int timeOfDay = 0;
+#define PI 3.141592654
 
-ostream &operator<<(ostream &output, Vehicle inputVehicle)
-{
-	output << "Time:\t\t12:" << timeOfDay << endl;
-	output << "Model:\t\t" << inputVehicle.getModel() << endl;
-	output << "Latitude:\t" << inputVehicle.getlatitude() << endl;
-	output << "Longitude:\t" << inputVehicle.getLongitude() << endl;
-	output << "Current Speed:\t" << inputVehicle.getCurrentSpeed() << endl;
-	output << endl << endl;
-	return output;
-}
 
 int main()
 {
-	Vehicle myCar(MIDSIZE);									//first create a car
-	myCar.setlatitude(40.581503000);						//set its starting variables
-	myCar.setLongitude(-105.062886);						//**
-	myCar.setCurrentSpeed(1);								//**
-	myCar.setAccelerationSpeed(3);							//**
-	myCar.setbrakingSpeed(5);								//**
-	myCar.setMaxSpeed(60);
-	cout << myCar;
-	myCar.setModel("Honda");
-	myCar.setDirection(140);
-	VehicleComputer carComputer(TIMEINCREMENT);
-	//test the acceleration of the car
-	cout << "Starting testAcceleration." << endl;			//prompt the users
+	Vehicle one;									//create a car
+
+	one.setKind("someCar");							//initialize variables in the class
+	one.setMaxSpeed(1);	
+	one.setMinSpeed(2);	
+	one.setTraction(3);
+	one.setWeight(4);
+	one.setBrakePower(5);
+	one.setLeangth(6);
+	one.setWidth(7);
+	one.setHazardRating(8);
+	one.setCurrentSpeed(45);
+	one.setDirection(PI / 6);						//radains, E is 0
+	one.setLongitude(40.0);
+	one.setLatitude(-105.0);
+	one.setAcceleration(9);
+	one.setEmergencyVehicle(true);
+	one.setOverSized(false);
+
+	cout << endl << "Use Overloaded '<<' as an output of all member values..." << endl;
+	cout << one << endl;
+
+	cout << endl << "Use 'simplePrint' fxn..." << endl;
+	simplePrint(one);
+
+	cout << endl << "Use, 'directionPrint' fxn..." << endl;
+	directionPrint(one);
+
+	cout << endl << endl;
 	system("pause");
-	for(int i = 0; i < 50; i++)
-	{
-		carComputer.moveVehicle(myCar);
-		system("pause");
-		system("cls");
-		cout << myCar;
-		timeOfDay++;
-	}
-
-	//Testing moving arrays full of cars
-	Vehicle* testCars;
- 	testCars = new Vehicle[5];
-	for (int i = 0; i < sizeof(testCars); i++)
-	{
-		testCars[i].setlatitude(40.581503000);						//set its starting variables
-		testCars[i].setLongitude(-105.062886);						//**
-		testCars[i].setCurrentSpeed(1);								//**
-		testCars[i].setAccelerationSpeed(3);						//**
-		testCars[i].setbrakingSpeed(5);								//**
-		testCars[i].setMaxSpeed(60);
-		testCars[i].setModel("Honda");
-		testCars[i].setDirection(140);
-	}
-	VehicleComputer carHub(TIMEINCREMENT);
-
-	for (int i = 0; i < 50; i++)
-	{
-
-		carComputer.moveVehicle(testCars);
-
-		system("pause");
- 		
-		for (int m = 0; m < sizeof(testCars); m++)
-			cout << testCars[m];
-		timeOfDay++;
-	}
+	return 0;
 }

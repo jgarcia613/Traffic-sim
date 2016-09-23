@@ -1,83 +1,82 @@
 #pragma once
-#include "Includes.h"
+#include <iostream>
+#include <string>
+#include <iomanip> 
+
+using namespace std;
+
+#define PI 3.141592654
 
 class Vehicle
 {
 private:
-	string vehicleModel;
-	int minSpeed;
-	int maxSpeed;
-	int accelerationSpeed;
-	int brakingSpeed;
-	double currentSpeed;
-	int tracktion;
+	string kind;	//enumeration later
+	int maxSpeed;	//double
+	int minSpeed;	//double
+	int traction;
 	int weight;
-	int brakingPower;
-	int length;
+	int brakePower;
+	int leangth;
 	int width;
 	int hazardRating;
-	double latitude;
+	double currentSpeed;
+	double direction;	// radains, E is 0
 	double longitude;
-	double direction;		//radians east is zero
+	double latitude;
 	double acceleration;
-	bool oversized;
 	bool emergencyVehicle;
+	bool overSized;
+
+	friend ostream &operator<<(ostream &output, Vehicle lorry);			//overload << outputs all members
+	friend void simplePrint(Vehicle lorry);								//outputs current speed, acceleration, direction, long, lat
+	friend void directionPrint(Vehicle lorry);							//outputs direction degrees, and cardinal direction
+
 
 public:
-	friend ostream &operator<<(ostream &output, Vehicle inputCar);
+
 	Vehicle();
-	Vehicle(enum CARTYPES inputCARTYPE);
+	~Vehicle();
+	Vehicle(string data);
 
-	Vehicle operator++()
-	{
-		currentSpeed = currentSpeed + acceleration / 3600;
-		longitude += 0.001;
-		return *this;
-	}
-								//526-528
-	Vehicle operator++(int x)	//post fix pages 384-416
-	{
-		currentSpeed = currentSpeed + acceleration / 3600;
-		longitude += 0.001;
-		return *this;
-	}
+	Vehicle operator ++(int x);
 
-	string getModel();
-	int getbrakingSpeed();
-	int getAccelerationSpeed();
-	int getMinSpeed();
+	void setKind(string data);
+	void setMaxSpeed(int data);
+	void setMinSpeed(int data);
+	void setTraction(int data);
+	void setWeight(int data);
+	void setBrakePower(int data);
+	void setLeangth(int data);
+	void setWidth(int data);
+	void setHazardRating(int data);
+	void setCurrentSpeed(double data);
+	void setDirection(double data);
+	void setLongitude(double data);
+	void setLatitude(double data);
+	void setAcceleration(double data);
+	void setEmergencyVehicle(bool data);
+	void setOverSized(bool data);
+
+	string getKind();
 	int getMaxSpeed();
-	double getCurrentSpeed();
-	int getTracktion();
+	int getMinSpeed();
+	int getTraction();
 	int getWeight();
-	int getbrakingPower();
-	int getLength();
+	int getBrakePower();
+	int getLeangth();
 	int getWidth();
 	int getHazardRating();
-	double getlatitude();
-	double getLongitude();
-	double getAcceleration();
-	bool getOversized();
-	bool getEmergencyVehicle();
+	double getCurrentSpeed();
 	double getDirection();
+	double getLongitude();
+	double getLatitude();
+	double getAcceleration();
+	bool getEmergencyVehicle();
+	bool getOverSized();
 
-	void setbrakingSpeed(int inputSpeed);
-	void setAccelerationSpeed(int inputSpeed);
-	void setModel(string inputModel);
-	void setMinSpeed(int inputSpeed);
-	void setMaxSpeed(int inputSpeed);
-	void setCurrentSpeed(double inputSpeed);
-	void setTracktion(int inputTraction);
-	void setWeight(int inputWeight);
-	void setbrakingPower(int inputbrakingPower);
-	void setLength(int inputLength);
-	void setWidth(int inputWidth);
-	void setHazardRating(int inputHazardRating);
-	void setlatitude(double inputlatitude);
-	void setLongitude(double inputLongitude);
-	void setAcceleration(double inputAcceleration);
-	void setOversized(bool inputOversized);
-	void setEmergencyVehicle(bool inputEmergencyVehicle);
-	void setDirection(double inputDirection);
-	void applyAcceleration(double time);
+	// These are mine (Isaac Haas, Output Group)  ******************************************************
+
+	double directionDegrees();
+	double convertRadians(double numRadians);
+	string calculateCardinalDirection();
 };
