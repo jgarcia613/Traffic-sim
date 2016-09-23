@@ -1,0 +1,47 @@
+#pragma once
+#include <iostream>
+#include <string>
+using namespace std;
+int currentSpeed;
+
+/*Variables still need to be linked to where they pull information from either through getters and setters, or friending - Jeremy*/
+
+void miToKm(double distance)//Converts from miles to kilometers
+{
+	distance = distance * 1.60934;
+}
+
+void kmToMi(double distance)//converts from kilometers to miles
+{
+	distance = distance * 0.621371;
+}
+
+
+void kmhToMph(double speed)//Converts from kilometers per hour to miles per hour
+{
+	speed = speed * 0.621371;
+}
+
+
+void mphToKmh(float speed)//converts from miles per hour to kilometers per hour
+{
+	speed = speed * 1.60934;
+}
+
+void kmhToMps(float speed)//converts from kilometers per hour to meters per second
+{
+	speed = speed * 0.44704;
+}
+void mpsToKmh(float speed)//converts from meters per second to miles per hour
+{
+	speed = speed * 3.6;
+}
+
+void degreesToRadians(float direction)//converts from degrees to radians
+{
+	direction = direction * 0.0174533;
+}
+void radiansToDegrees(float direction)//converts from radians to degrees
+{
+	direction = direction * 57.2598;
+}
