@@ -1,5 +1,7 @@
 #pragma once
 #include "Includes.h"
+
+//constructers
 Vehicle::Vehicle()
 {
 	minSpeed = 0;
@@ -50,10 +52,28 @@ Vehicle::Vehicle(enum CARTYPES inputCARTYPE)
 		break;
 	}
 }
+
+//operator overloads
+ostream &operator<<(ostream &output, Vehicle inputVehicle)
+{
+	output << "Model:\t\t" << inputVehicle.getModel() << endl;
+	output << "Latitude:\t" << inputVehicle.getlatitude() << endl;
+	output << "Longitude:\t" << inputVehicle.getLongitude() << endl;
+	output << "Current Speed:\t" << inputVehicle.getCurrentSpeed() << endl;
+	output << endl << endl;
+	return output;
+}
+Vehicle Vehicle::operator++()
+{
+	currentSpeed = currentSpeed + acceleration / 3600; //why / by 3600 are we not storing acceleration in seconds?
+	longitude += 0.001;
+	return *this;
+}
+
 //************************************************
 //Getters
 //************************************************
-string Vehicle::getModel()
+CARTYPES Vehicle::getModel()
 {
 	return vehicleModel;
 }
@@ -61,13 +81,9 @@ double Vehicle::getDirection()
 {
 	return direction;
 }
-int Vehicle::getAccelerationSpeed()
+double Vehicle::getMaxAcceleration()
 {
-	return accelerationSpeed;
-}
-int Vehicle::getbrakingSpeed()
-{
-	return brakingSpeed;
+	return maxAcceleration;
 }
 int Vehicle::getMinSpeed()
 {
@@ -89,7 +105,7 @@ int Vehicle::getWeight()
 {
 	return weight;
 }
-int Vehicle::getbrakingPower()
+double Vehicle::getbrakingPower()
 {
 	return brakingPower;
 }
@@ -129,21 +145,15 @@ bool Vehicle::getEmergencyVehicle()
 //************************************************
 //Setters
 //************************************************
-
-
-void Vehicle::setAccelerationSpeed(int inputSpeed)
+void Vehicle::setMaxAcceleration(double inputSpeed)
 {
-	accelerationSpeed = inputSpeed;
+	maxAcceleration = inputSpeed;
 }
 void Vehicle::setDirection(double inputDirection)
 {
 	direction = inputDirection;
 }
-void Vehicle::setbrakingSpeed(int inputSpeed)
-{
-	brakingSpeed = inputSpeed;
-}
-void Vehicle::setModel(string inputModel)
+void Vehicle::setModel(CARTYPES inputModel)
 {
 	vehicleModel = inputModel;
 }
@@ -167,7 +177,7 @@ void Vehicle::setWeight(int inputWeight)
 {
 	weight = inputWeight;
 }
-void Vehicle::setbrakingPower(int inputbrakingPower)
+void Vehicle::setbrakingPower(double inputbrakingPower)
 {
 	brakingPower = inputbrakingPower;
 }
