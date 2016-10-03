@@ -1,3 +1,4 @@
+//Jaqueline Garcia, Andrew Byrne, David Sant
 #include "Signal.h"
 
 
