@@ -1,9 +1,4 @@
-/*_____________________________________________
-David Sant
-First Class
-September 6, 2016
-Demenstrate that the getters and setters work
-_______________________________________________*/
+//Jaqueline Garcia, Andrew Byrne, David Sant
 #include "Vehicle.h"
 #include <iomanip>
 #include <vector>
