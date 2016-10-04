@@ -39,7 +39,7 @@ void VehicleComputer::accelerateVehicle(Vehicle &inputVehicle)
 	double distanceMoved = calculateDistance(inputVehicle);
 	double y = distanceMoved*sin(inputVehicle.getDirection()*0.0174533)*0.000009;
 	double x = distanceMoved*cos(inputVehicle.getDirection()*0.0174533)*0.000009;
-	inputVehicle.setLatitude(inputVehicle.getLatitude() + y);		//was setlatitude and getlatitude. corrected to setL.. and getL.. to fix error (Spence Wilson 0940 10/4/16)
+	inputVehicle.setlatitude(inputVehicle.getlatitude() + y);		
 	inputVehicle.setLongitude(inputVehicle.getLongitude() + x);
 	cout << "Change in speed:\t" << (inputVehicle.getCurrentSpeed() + inputVehicle.getAcceleration() * time) << endl; //**OUTPUT for cange in speed:	XXXX
 	inputVehicle.setCurrentSpeed(inputVehicle.getCurrentSpeed() + inputVehicle.getAcceleration() * time);
