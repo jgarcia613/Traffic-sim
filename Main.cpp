@@ -9,9 +9,6 @@ _______________________________________________*/
 #include <vector>
 using namespace std;
 
-#define PI 3.141592654
-
-
 int main()
 {
 	Vehicle one;									//create a car
