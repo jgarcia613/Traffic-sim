@@ -29,8 +29,8 @@ private:
 	int northBoundCount;
 	int eastBoundCount;
 public:
-	Signal();
-	void vectorFill(ifstream &fin);		
+	Signal(ifstream &fin);			//updated constructor to take the parameter of an ifstream.
+	//void vectorFill(ifstream &fin);	no longer need this function, was removed in .cpp		
 	void printVector();
 
 };
