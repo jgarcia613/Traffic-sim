@@ -21,7 +21,7 @@ int main()
 	vector <Signal> trafficLight;		//like this
 	int distance = 50;
 
-	fin.open("signal.txt");			//opens signal file. uses space delimiation (default)
+	fin.open("signalDemo.txt");			//opens signal file. uses space delimiation (default)
 
 	if (fin.fail())					//if it does not open the file it lets you know.
 	{
