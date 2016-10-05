@@ -2,21 +2,24 @@
 #include "Signal.h"
 
 
-
-Signal::Signal()
+/* 
+Whenever a Signal object is created  with the parameter of Signal(fin) it will call this constructor
+*/
+Signal::Signal(ifstream &fin) 
 {
-	location = "null";
-	latitude = -1.0;
-	longitude = -1.0;
-	startTime = -1; //0730 hours
-	endTime = -1;
-	//car count totals for thru lane//
-	 southBoundCount = -1;
-	 westBoundCount = -1;
-	 northBoundCount = -1;
-	 eastBoundCount = -1;
+	fin >> location;	
+	fin >> latitude;
+	fin >> longitude;
+	fin >> startTime;
+	fin >> endTime;
+	fin >> southBoundCount;
+	fin >> westBoundCount;
+	fin >> northBoundCount;
+	fin >> eastBoundCount;
 }
 
+/* This would be an acceptable way to fill an Array or vector with a declared size. Does not work too well with a dynamic vector.
+instead look at the constructor
 void Signal::vectorFill(ifstream &fin)		//fills the object's data members
 {
 	
@@ -30,7 +33,7 @@ void Signal::vectorFill(ifstream &fin)		//fills the object's data members
 	fin >> northBoundCount;
 	fin >> eastBoundCount;
 	
-}
+}*/
 
 void Signal::printVector()		//prints them too
 {
