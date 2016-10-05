@@ -17,7 +17,8 @@ int main()
 	ifstream fin;
 	//vector of Signals, this is where I have my most trouble. If I do no declare a size I get a bunch of syntax errros. I would very much like to not declare a size
 	//any ideas?
-	vector <Signal> trafficLight(10);
+	//vector <Signal> trafficLight(10);	//when not declaring a size, do not leave behind the parenthesis.
+	vector <Signal> trafficLight;		//like this
 	int distance = 50;
 
 	fin.open("signal.txt");			//opens signal file. uses space delimiation (default)
@@ -27,20 +28,29 @@ int main()
 		cout << "file didn't open" << endl;
 		system("pause");
 	}
-	for (int i = 0; !fin.fail(); i++)		//fills vector using my filling method
-	{
-		trafficLight[i].vectorFill(fin);
-	}
+	//for (int i = 0; !fin.fail(); i++)		this would not be the way to fill it. 
+	//{
+	//	trafficLight[i].vectorFill(fin);	if we use this method to fill the vector, it must have a predetermined size
+	//						if no size is declared it tries to place an object in location 0, which does not
+	//						exist.
+	//}
+							//instead we should use the constructer of the Signal class to read in data
+	for (int i = 0; !fin.fail(); i++)		// !fin.fail() returns true as long as there is more data in the file. once it reaches the end
+	{						//it returns false.
+		trafficLight.push_back(fin);	
+	}						// .push_back is a method of the vector class. which creates a new location on the vector and
+							// then places the object (calling the constructor that contains the ifstream parameter) 
+							//in the new location				
 
 	cout <<  "Location |" << setw(20) << "Latitude |" << setw(20) << "Longitude |" << setw(20) << "Start Time |" << setw(20) << "End Time |" << setw(20) << "South Bound Count |" <<
 		setw(20) << "West Bount Count |" << setw(20) << "North Bound Count |" << setw(20) << "East Bound Count |" << endl;
 
 		
-	for (int i = 0; i < 10; i++)		//prints vector
-	{
-		trafficLight[i].printVector();
+	for (int i = 0; i < trafficLight.size(); i++)	//prints vector using a for loop interator. .size() returns the size of the vector.
+	{						//so no matter the size of the vector we will not iterate over the end
+		trafficLight[i].printVector();		// a vector Iterator may work better in this situation.
 	}
-	fin.close();
+	fin.close();					//do not forget to close the file. resource leaks are bad.
 	
 
 //	cout << "speed		acceleration	  longitude\n";
