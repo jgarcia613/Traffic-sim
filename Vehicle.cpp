@@ -70,12 +70,15 @@ Vehicle Vehicle::operator++()
 	return *this;
 }
 
+
+
 //************************************************
 //Getters
 //************************************************
 CARTYPES Vehicle::getModel()
 {
-	return vehicleModel;
+	return MIDSIZE;
+	//return vehicleModel;
 }
 double Vehicle::getDirection()
 {
@@ -155,7 +158,7 @@ void Vehicle::setDirection(double inputDirection)
 }
 void Vehicle::setModel(CARTYPES inputModel)
 {
-	vehicleModel = inputModel;
+	//vehicleModel = inputModel;
 }
 void Vehicle::setMinSpeed(int inputSpeed)
 {

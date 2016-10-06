@@ -1,14 +1,16 @@
 #pragma once
+//#include "Location.h"
 #include "Includes.h"
+
 /***********************************************************************
 Commented by: Michael Ritter
 Change Log Location: bottom of this file.
 ************************************************************************/
-
+class Location;
 class Vehicle
 {
 private:
-	CARTYPES vehicleModel;  //enum, FOUND IN: Inclueds.h
+	Location spot();  /*where on x y grid*/
 	int minSpeed;				//minimum speed the car is allowed to go
 	int maxSpeed;				//maximum speed the car can go (speed limit on current rode)
 	double currentSpeed;		//the current speed of vehicle
@@ -29,6 +31,7 @@ private:
 	int hazardRating;			//not being used at the moment
 
 public:
+
 	
 	//constructers
 	Vehicle();
@@ -76,8 +79,10 @@ public:
 	void setEmergencyVehicle(bool inputEmergencyVehicle);
 	void setDirection(double inputDirection);
 
-	//unknow functions
-	void applyAcceleration(double time); //no idea what this is for
+	
+
+	void applyAcceleration(double time); 
+
 };
 
 
