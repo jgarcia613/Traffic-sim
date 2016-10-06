@@ -2,8 +2,9 @@
 
 int main()
 {
-	Vehicle myCar;
-	Location spot;
+	cout << "in main\n";
+	Car myCar;
+	//Location spot;
 
 	cout << myCar;
 

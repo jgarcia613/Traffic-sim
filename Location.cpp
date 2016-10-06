@@ -1,9 +1,11 @@
-#include "Location.h"
+#pragma once
+#include "includes.h"
 
 
 
 Location::Location()
 {
+	cout << "in location\n";
 }
 
 

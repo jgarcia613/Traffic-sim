@@ -6,6 +6,7 @@ using namespace std;
 
 #include "Location.h"
 #include "Vehicle.h"
+#include "c:\Users\victoria.eisele\Desktop\traffic10_6\traffic10_6\Car.h"
 
 class Location;
 class Vehicle;

@@ -4,6 +4,9 @@
 //constructers
 Vehicle::Vehicle()
 {
+	
+	cout << "in vehicle\n";
+	Location(spot);
 	minSpeed = 0;
 	maxSpeed = 0;
 	currentSpeed = 0;

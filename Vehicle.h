@@ -10,7 +10,7 @@ class Location;
 class Vehicle
 {
 private:
-	Location spot();  /*where on x y grid*/
+	
 	int minSpeed;				//minimum speed the car is allowed to go
 	int maxSpeed;				//maximum speed the car can go (speed limit on current rode)
 	double currentSpeed;		//the current speed of vehicle
@@ -31,7 +31,7 @@ private:
 	int hazardRating;			//not being used at the moment
 
 public:
-
+	Location spot();  /*where on x y grid*/
 	
 	//constructers
 	Vehicle();
