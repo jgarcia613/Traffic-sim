@@ -1,9 +1,8 @@
+//@author Wesley Stutzman
 #pragma once
-#include <string>
 #include <iostream>
-#include <Math.h>
+#include <string>
+#include <sstream>
+#include <fstream>
 using namespace std;
-#include "Vehicle.h"
-const double PI = 3.14;
-const int TIME_INCREMENT = 1;
-const enum CARTYPES {MIDSIZE, SEMI, TRUCK, SPORTSCAR};
+#include "DataReader.h"
